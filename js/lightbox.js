@@ -8,10 +8,18 @@
 		this.bodyNode = $(document.body);
 		// 渲染剩余的DOM，并且插入到body下
 		this.randerDOM();
+		this.picViewArea = this.popupWin.find("div.lightbox-pic-view");
+		this.popupPic = this.popupWin.find("img.lightbox-image");
+		this.picCaptionArea = this.popupWin.find("div.lightbox-pic-caption");
+		this.nextBtn = this.popupWin.find("span.lightbox-next-btn");
+		this.prevBtn = this.popupWin.find("span.lightbox-prev-btn");
+		this.captionText = this.popupWin.find("p.lightbox-caption-desc");
+		this.currentIndex = this.popupWin.find("span.lightbox-of-index");
+		this.closeBtn = this.popupWin.find("span.lightbox-close-btn");
 		//准备开发事件委托(get新生成元素)，获取组数据
 		this.groupName = null;
 		this.groupData = [];//放置同一组数据
-		this.bodyNode.delegate(".js-lightbox,*[data-role = lightbix]","click",function(e){
+		this.bodyNode.on("click",".js-lightbox,*[data-role = lightbix]",function(e){
 			// 组织事件冒泡
 			e.stopPropagation()
 			var currentGroupName = $(this).attr("data-group");
@@ -20,9 +28,40 @@
 				// 根据当前组名获取同一组数据
 				self.getGroup();
 			}
+			// 初始化弹出框
+			self.initPopup($(this));
 		})
 	}
 	Lightbox.prototype = {
+		showMaskAndPopup:function(sourceSrc,currentId){
+			var self = this;
+			this.popupPic.hide();
+			this.picCaptionArea.hide();
+			this.popupMask.fadeIn();
+			var winWidth = $(window).width();
+			var winHeight = $(window).height();
+			this.picViewArea.css({
+				width:winWidth/2,
+				height:winHeight/2
+			});
+			this.popupWin.fadeIn();
+			this.popupWin.css({
+				width:winWidth/2+10,
+				height:winHeight/2+10,
+				marginLeft:-(winWidth/2+10)/2,
+				top:-(winWidth/2+10)
+			}).animate({
+				top:(winWidth-winWidth/2+10)/2.5
+			},function(){
+
+			})
+		},
+		initPopup:function(currentObj){
+			var self = this;
+			sourceSrc = currentObj.attr("data-source");
+			currentId = currentObj.attr("data-id");
+			this.showMaskAndPopup(sourceSrc,currentId);
+		},
 		getGroup:function(){
 			var self = this;
 			// 根据当前组别名称，获取所有相同组别的对象
@@ -54,7 +93,7 @@
 			// 插入到this.popupWin
 			this.popupWin.html(strDOM)
 			// 把遮罩层和弹出框插入到body
-			// this.bodyNode.append(this.popupMask,this.popupWin)
+			this.bodyNode.append(this.popupMask,this.popupWin)
 		}
 	}
 	window['Lightbox'] = Lightbox;
