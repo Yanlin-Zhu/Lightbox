@@ -39,7 +39,6 @@ a:hover,a:active{text-decoration:underline;color:#f60;}
 	margin-left:-150px;
 }
 .lightbox-image{
-	width:100%;
 	/*去除5pxmargin-bottom*/
 	display:block;
 }
@@ -66,10 +65,12 @@ a:hover,a:active{text-decoration:underline;color:#f60;}
 #G-lightbox-popup .lightbox-pic-view .lightbox-prev-btn-show{
 	background:url('../icon/prev.png') no-repeat left center;
 	cursor:pointer;
+	display: block;
 }
 #G-lightbox-popup .lightbox-pic-view .lightbox-next-btn-show{
 	background:url('../icon/next.png') no-repeat right center;
 	cursor:pointer;
+	display: block;
 }
 #G-lightbox-popup .lightbox-pic-caption{
 	position:relative;
@@ -77,6 +78,7 @@ a:hover,a:active{text-decoration:underline;color:#f60;}
 	margin-top:-60px;
 	background-color:rgba(0,0,0,0.5);
 	z-index:2;
+	text-align: left;
 }
 #G-lightbox-popup .lightbox-pic-caption .lightbox-caption-area{
 	color:#fff;
@@ -92,4 +94,7 @@ a:hover,a:active{text-decoration:underline;color:#f60;}
 	background:url(../icon/close.png) no-repeat center center;
 	top:10px;
 	right:13px;
+}
+.disabied{
+	display: none;
 }
