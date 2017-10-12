@@ -72,7 +72,11 @@
 	<script type="text/javascript" src = "js/lightbox.js"></script>
 	<script type="text/javascript">
 		$(function(){
-			var lightbox = new Lightbox();
+			var lightbox = new Lightbox({
+				speed:"fast",
+				maxWidth:900,
+				maxHeight:600
+			});
 		})
 	</script>
 </body>

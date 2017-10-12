@@ -58,19 +58,21 @@ a:hover,a:active{text-decoration:underline;color:#f60;}
 }
 #G-lightbox-popup .lightbox-pic-view .lightbox-prev-btn{
 	left:0;
+	opacity: 0;
 }
 #G-lightbox-popup .lightbox-pic-view .lightbox-next-btn{
 	right:0;
+	opacity: 0;
 }
 #G-lightbox-popup .lightbox-pic-view .lightbox-prev-btn-show{
 	background:url('../icon/prev.png') no-repeat left center;
 	cursor:pointer;
-	display: block;
+	opacity: 1;
 }
 #G-lightbox-popup .lightbox-pic-view .lightbox-next-btn-show{
 	background:url('../icon/next.png') no-repeat right center;
 	cursor:pointer;
-	display: block;
+	opacity: 1;
 }
 #G-lightbox-popup .lightbox-pic-caption{
 	position:relative;
@@ -94,7 +96,4 @@ a:hover,a:active{text-decoration:underline;color:#f60;}
 	background:url(../icon/close.png) no-repeat center center;
 	top:10px;
 	right:13px;
-}
-.disabied{
-	display: none;
 }
